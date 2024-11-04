@@ -1,12 +1,31 @@
 <?php
-class MyDB extends SQLite3
+class MyDB
 {
-    function __construct()
+    private $pdo;
+
+    public function __construct()
     {
-        $this->open('mainDatabase.db');
+        $host = 'database-3.chaocgea2ln5.us-east-1.rds.amazonaws.com'; // เปลี่ยนให้เป็น endpoint ของ RDS
+        $dbName = 'your_database'; // ชื่อฐานข้อมูลที่ต้องการใช้
+        $user = 'admin';
+        $pass = 'Natta123$';
+
+        try {
+            $this->pdo = new PDO("mysql:host=$host;dbname=$dbName;charset=utf8", $user, $pass);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo 'Connection failed: ' . $e->getMessage();
+        }
+    }
+
+    public function getConnection()
+    {
+        return $this->pdo;
     }
 }
 
-// 2. Open Database 
+// เปิดการเชื่อมต่อ
 $db = new MyDB();
+$connection = $db->getConnection();
+
 ?>
