@@ -6,7 +6,7 @@ class MyDB
     public function __construct()
     {
         $host = 'database-3.chaocgea2ln5.us-east-1.rds.amazonaws.com'; // เปลี่ยนให้เป็น endpoint ของ RDS
-        $dbName = 'your_database'; // ชื่อฐานข้อมูลที่ต้องการใช้
+        $dbName = 'database-3'; // ชื่อฐานข้อมูลที่ต้องการใช้
         $user = 'admin';
         $pass = 'Natta123$';
 
